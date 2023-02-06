@@ -97,7 +97,10 @@ class GithubUtils:
             _logger.info("No tags found for the url {}".format(url))
             return None
         for tag in data:
-            url = tag['url']
+            if tag['zipball_url']:
+                url = tag['zipball_url']
+            elif tag['tarball_url']:
+                url = tag['tarball_url']
             if url and 'tags/' in url:
                 ver = url.split('tags/')[1]
                 if ver.startswith('v'):
