@@ -89,7 +89,7 @@ class GithubUtils:
         except AssertionError as e:
             _logger.error("Input data is not valid. {}".format(e))
             return None
-        url = self.GITHUB_API + "repos/{o}/{n}/git/refs/tags".format(
+        url = self.GITHUB_API + "repos/{o}/{n}/tags".format(
             o=org, n=name)
 
         data = self.__make_get_call(url)
